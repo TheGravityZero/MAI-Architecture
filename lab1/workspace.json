@@ -1,0 +1,673 @@
+{
+    "configuration" : { },
+    "description" : "Description",
+    "documentation" : { },
+    "id" : 1,
+    "lastModifiedAgent" : "structurizr-javascript",
+    "lastModifiedDate" : "2024-05-10T15:52:45Z",
+    "model" : {
+      "people" : [ {
+        "id" : "1",
+        "location" : "Unspecified",
+        "name" : "Пользователь",
+        "properties" : {
+          "structurizr.dsl.identifier" : "user"
+        },
+        "relationships" : [ {
+          "description" : "Регистрация и авторизация пользователей",
+          "destinationId" : "3",
+          "id" : "9",
+          "properties" : {
+            "structurizr.dsl.identifier" : "9c9b2ef1-cbfb-4a70-afcb-210691ea429a"
+          },
+          "sourceId" : "1",
+          "tags" : "Relationship"
+        }, {
+          "description" : "Регистрация и авторизация пользователей",
+          "destinationId" : "2",
+          "id" : "10",
+          "linkedRelationshipId" : "9",
+          "sourceId" : "1"
+        }, {
+          "description" : "Добавление услуги",
+          "destinationId" : "4",
+          "id" : "11",
+          "properties" : {
+            "structurizr.dsl.identifier" : "044fe637-24f6-4753-b23a-2dfc2f3908e0"
+          },
+          "sourceId" : "1",
+          "tags" : "Relationship"
+        }, {
+          "description" : "Получение и изменение информации о заказах и услугах",
+          "destinationId" : "2",
+          "id" : "18",
+          "properties" : {
+            "structurizr.dsl.identifier" : "11a3eb3f-56fa-4967-bc6b-242338566568"
+          },
+          "sourceId" : "1",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Person"
+      } ],
+      "properties" : {
+        "structurizr.groupSeparator" : "/"
+      },
+      "softwareSystems" : [ {
+        "containers" : [ {
+          "description" : "Сервис управления пользователями",
+          "documentation" : { },
+          "id" : "3",
+          "name" : "User service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "profiru_system.user_service"
+          },
+          "relationships" : [ {
+            "description" : "Получение и изменение данных о пользователях",
+            "destinationId" : "7",
+            "id" : "12",
+            "properties" : {
+              "structurizr.dsl.identifier" : "6f26d5fe-8619-4c60-b42f-2ff77b098079"
+            },
+            "sourceId" : "3",
+            "tags" : "Relationship"
+          }, {
+            "description" : "Получение и изменение данных о пользователях",
+            "destinationId" : "6",
+            "id" : "13",
+            "properties" : {
+              "structurizr.dsl.identifier" : "87329d08-724e-4558-929b-e6d3abc61357"
+            },
+            "sourceId" : "3",
+            "tags" : "Relationship"
+          }, {
+            "description" : "Получение заказа для пользователя",
+            "destinationId" : "5",
+            "id" : "14",
+            "properties" : {
+              "structurizr.dsl.identifier" : "f07edd8d-1e9d-48be-9ec8-8f269ab6fff4"
+            },
+            "sourceId" : "3",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Container"
+        }, {
+          "description" : "Сервис управления услугами",
+          "documentation" : { },
+          "id" : "4",
+          "name" : "Task service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "profiru_system.task_service"
+          },
+          "relationships" : [ {
+            "description" : "Получение и изменение данных об услугах",
+            "destinationId" : "8",
+            "id" : "15",
+            "properties" : {
+              "structurizr.dsl.identifier" : "89266a47-52b9-455c-bdaa-fc72656f16c0"
+            },
+            "sourceId" : "4",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Container"
+        }, {
+          "description" : "Сервис оформления заказов",
+          "documentation" : { },
+          "id" : "5",
+          "name" : "Order service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "profiru_system.order_service"
+          },
+          "relationships" : [ {
+            "description" : "Получение и изменение данных о заказах",
+            "destinationId" : "8",
+            "id" : "16",
+            "properties" : {
+              "structurizr.dsl.identifier" : "59fb8cf2-f78a-4bb6-85ba-b3a5e632a7b6"
+            },
+            "sourceId" : "5",
+            "tags" : "Relationship"
+          }, {
+            "description" : "Добавление услуг в заказ",
+            "destinationId" : "4",
+            "id" : "17",
+            "properties" : {
+              "structurizr.dsl.identifier" : "da9c1eb6-f4e5-4c8f-b6d2-9c83181f5712"
+            },
+            "sourceId" : "5",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Container"
+        }, {
+          "description" : "База данных пользоватей",
+          "documentation" : { },
+          "group" : "Слой данных",
+          "id" : "6",
+          "name" : "User database",
+          "properties" : {
+            "structurizr.dsl.identifier" : "profiru_system.user_database"
+          },
+          "tags" : "Element,Container,database",
+          "technology" : "PostgreSQL 15"
+        }, {
+          "description" : "Кеш данных пользователей для ускорения аутентификации",
+          "documentation" : { },
+          "group" : "Слой данных",
+          "id" : "7",
+          "name" : "User cache",
+          "properties" : {
+            "structurizr.dsl.identifier" : "profiru_system.user_cache"
+          },
+          "tags" : "Element,Container,database",
+          "technology" : "Redis"
+        }, {
+          "description" : "База данных услуг и заказов",
+          "documentation" : { },
+          "group" : "Слой данных",
+          "id" : "8",
+          "name" : "Tasks database",
+          "properties" : {
+            "structurizr.dsl.identifier" : "profiru_system.task_database"
+          },
+          "tags" : "Element,Container,database",
+          "technology" : "MongoDB 5"
+        } ],
+        "description" : "Сервис заказа услуг",
+        "documentation" : { },
+        "id" : "2",
+        "location" : "Unspecified",
+        "name" : "Сервис заказа услуг",
+        "properties" : {
+          "structurizr.dsl.identifier" : "profiru_system"
+        },
+        "tags" : "Element,Software System"
+      } ]
+    },
+    "name" : "Сайт заказа услуг",
+    "properties" : {
+      "structurizr.dsl" : "d29ya3NwYWNlIHsKICAgIG5hbWUgItCh0LDQudGCINC30LDQutCw0LfQsCDRg9GB0LvRg9CzIgoKICAgICFpZGVudGlmaWVycyBoaWVyYXJjaGljYWwKCgogICAgbW9kZWwgewoKICAgICAgICBwcm9wZXJ0aWVzIHsgCiAgICAgICAgICAgIHN0cnVjdHVyaXpyLmdyb3VwU2VwYXJhdG9yICIvIgogICAgICAgIH0KCiAgICAgICAgdXNlciA9IHBlcnNvbiAi0J/QvtC70YzQt9C+0LLQsNGC0LXQu9GMIgoKICAgICAgICBwcm9maXJ1X3N5c3RlbSA9IHNvZnR3YXJlU3lzdGVtICLQodC10YDQstC40YEg0LfQsNC60LDQt9CwINGD0YHQu9GD0LMiIHsKICAgICAgICAgICAgZGVzY3JpcHRpb24gItCh0LXRgNCy0LjRgSDQt9Cw0LrQsNC30LAg0YPRgdC70YPQsyIKCiAgICAgICAgICAgIAogICAgICAgICAgICB1c2VyX3NlcnZpY2UgPSBjb250YWluZXIgIlVzZXIgc2VydmljZSIgewogICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gItCh0LXRgNCy0LjRgSDRg9C/0YDQsNCy0LvQtdC90LjRjyDQv9C+0LvRjNC30L7QstCw0YLQtdC70Y/QvNC4IgogICAgICAgICAgICB9IAoKICAgICAgICAgICAgdGFza19zZXJ2aWNlID0gY29udGFpbmVyICJUYXNrIHNlcnZpY2UiIHsKICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICLQodC10YDQstC40YEg0YPQv9GA0LDQstC70LXQvdC40Y8g0YPRgdC70YPQs9Cw0LzQuCIKICAgICAgICAgICAgfSAKICAgICAgICAgICAgCiAgICAgICAgICAgIG9yZGVyX3NlcnZpY2UgPSBjb250YWluZXIgIk9yZGVyIHNlcnZpY2UiIHsKICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICLQodC10YDQstC40YEg0L7RhNC+0YDQvNC70LXQvdC40Y8g0LfQsNC60LDQt9C+0LIiCiAgICAgICAgICAgIH0gCgogICAgICAgICAgICBncm91cCAi0KHQu9C+0Lkg0LTQsNC90L3Ri9GFIiB7CiAgICAgICAgICAgICAgICB1c2VyX2RhdGFiYXNlID0gY29udGFpbmVyICJVc2VyIGRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gItCR0LDQt9CwINC00LDQvdC90YvRhSDQv9C+0LvRjNC30L7QstCw0YLQtdC5IgogICAgICAgICAgICAgICAgICAgIHRlY2hub2xvZ3kgIlBvc3RncmVTUUwgMTUiCiAgICAgICAgICAgICAgICAgICAgdGFncyAiZGF0YWJhc2UiCiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgdXNlcl9jYWNoZSA9IGNvbnRhaW5lciAiVXNlciBjYWNoZSIgewogICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICLQmtC10Ygg0LTQsNC90L3Ri9GFINC/0L7Qu9GM0LfQvtCy0LDRgtC10LvQtdC5INC00LvRjyDRg9GB0LrQvtGA0LXQvdC40Y8g0LDRg9GC0LXQvdGC0LjRhNC40LrQsNGG0LjQuCIKICAgICAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJSZWRpcyIKICAgICAgICAgICAgICAgICAgICB0YWdzICJkYXRhYmFzZSIKICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICB0YXNrX2RhdGFiYXNlID0gY29udGFpbmVyICJUYXNrcyBkYXRhYmFzZSIgewogICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICLQkdCw0LfQsCDQtNCw0L3QvdGL0YUg0YPRgdC70YPQsyDQuCDQt9Cw0LrQsNC30L7QsiIKICAgICAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJNb25nb0RCIDUiCiAgICAgICAgICAgICAgICAgICAgdGFncyAiZGF0YWJhc2UiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIHVzZXIgLT4gdXNlcl9zZXJ2aWNlICLQoNC10LPQuNGB0YLRgNCw0YbQuNGPINC4INCw0LLRgtC+0YDQuNC30LDRhtC40Y8g0L/QvtC70YzQt9C+0LLQsNGC0LXQu9C10LkiCiAgICAgICAgICAgIHVzZXIgLT4gdGFza19zZXJ2aWNlICLQlNC+0LHQsNCy0LvQtdC90LjQtSDRg9GB0LvRg9Cz0LgiCgogICAgICAgICAgICB1c2VyX3NlcnZpY2UgLT4gdXNlcl9jYWNoZSAi0J/QvtC70YPRh9C10L3QuNC1INC4INC40LfQvNC10L3QtdC90LjQtSDQtNCw0L3QvdGL0YUg0L4g0L/QvtC70YzQt9C+0LLQsNGC0LXQu9GP0YUiCiAgICAgICAgICAgIHVzZXJfc2VydmljZSAtPiB1c2VyX2RhdGFiYXNlICLQn9C+0LvRg9GH0LXQvdC40LUg0Lgg0LjQt9C80LXQvdC10L3QuNC1INC00LDQvdC90YvRhSDQviDQv9C+0LvRjNC30L7QstCw0YLQtdC70Y/RhSIKICAgICAgICAgICAgdXNlcl9zZXJ2aWNlIC0+IG9yZGVyX3NlcnZpY2UgItCf0L7Qu9GD0YfQtdC90LjQtSDQt9Cw0LrQsNC30LAg0LTQu9GPINC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRjyIKCgkJCXRhc2tfc2VydmljZSAtPiB0YXNrX2RhdGFiYXNlICLQn9C+0LvRg9GH0LXQvdC40LUg0Lgg0LjQt9C80LXQvdC10L3QuNC1INC00LDQvdC90YvRhSDQvtCxINGD0YHQu9GD0LPQsNGFIgoKCQkJb3JkZXJfc2VydmljZSAtPiB0YXNrX2RhdGFiYXNlICLQn9C+0LvRg9GH0LXQvdC40LUg0Lgg0LjQt9C80LXQvdC10L3QuNC1INC00LDQvdC90YvRhSDQviDQt9Cw0LrQsNC30LDRhSIKICAgICAgICAgICAgb3JkZXJfc2VydmljZSAtPiB0YXNrX3NlcnZpY2UgItCU0L7QsdCw0LLQu9C10L3QuNC1INGD0YHQu9GD0LMg0LIg0LfQsNC60LDQtyIgICAKICAgICAgICB9CgogICAgICAgIHVzZXIgLT4gcHJvZmlydV9zeXN0ZW0gItCf0L7Qu9GD0YfQtdC90LjQtSDQuCDQuNC30LzQtdC90LXQvdC40LUg0LjQvdGE0L7RgNC80LDRhtC40Lgg0L4g0LfQsNC60LDQt9Cw0YUg0Lgg0YPRgdC70YPQs9Cw0YUiCgogICAgfQogICAgCiAgICB2aWV3cyB7CiAgICAgICAgdGhlbWVzIGRlZmF1bHQKCiAgICAgICAgcHJvcGVydGllcyB7CiAgICAgICAgICAgIHN0cnVjdHVyaXpyLnRvb2x0aXBzIHRydWUKICAgICAgICB9CgogICAgICAgIHN5c3RlbUNvbnRleHQgcHJvZmlydV9zeXN0ZW0gewogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgIH0KCiAgICAgICAgY29udGFpbmVyIHByb2ZpcnVfc3lzdGVtIHsKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICB9CgogICAgICAgIGR5bmFtaWMgcHJvZmlydV9zeXN0ZW0gIlVDMDEiICLQodC+0LfQtNCw0L3QuNC1INC90L7QstC+0LPQviDQv9C+0LvRjNC30L7QstCw0YLQtdC70Y8iIHsKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgICAgICB1c2VyIC0+IHByb2ZpcnVfc3lzdGVtLnVzZXJfc2VydmljZSAi0KHQvtC30LTQsNC90LjQtSDQv9C+0LvRjNC30L7QstCw0YLQtdC70Y8gKFBPU1QgL3VzZXIpIgogICAgICAgICAgICBwcm9maXJ1X3N5c3RlbS51c2VyX3NlcnZpY2UgLT4gcHJvZmlydV9zeXN0ZW0udXNlcl9kYXRhYmFzZSAi0KHQvtGF0YDQsNC90LXQvdC40LUg0LTQsNC90L3Ri9GFINC+INC/0L7Qu9GM0LfQvtCy0LDRgtC10LvQtSIgCiAgICAgICAgICAgIHByb2ZpcnVfc3lzdGVtLnVzZXJfc2VydmljZSAtPiBwcm9maXJ1X3N5c3RlbS51c2VyX2NhY2hlICLQmtGN0YjQuNGA0L7QstCw0L3QuNC1INC00LDQvdC90YvRhSDQviDQv9C+0LvRjNC30L7QstCw0YLQtdC70LUiIAogICAgICAgIH0KCiAgICAgICAgZHluYW1pYyBwcm9maXJ1X3N5c3RlbSAiVUMwMiIgItCf0L7QuNGB0Log0L/QvtC70YzQt9C+0LLQsNGC0LXQu9GPINC/0L4g0LvQvtCz0LjQvdGDIiB7CiAgICAgICAgICAgIGF1dG9MYXlvdXQKICAgICAgICAgICAgdXNlciAtPiBwcm9maXJ1X3N5c3RlbS51c2VyX3NlcnZpY2UgItCf0L7QuNGB0Log0L/QvtC70YzQt9C+0LLQsNGC0LXQu9GPIChHRVQgL3VzZXIpIgoJCQlwcm9maXJ1X3N5c3RlbS51c2VyX3NlcnZpY2UgLT4gcHJvZmlydV9zeXN0ZW0udXNlcl9jYWNoZSAi0J/QvtC70YPRh9C10L3QuNC1INC00LDQvdC90YvRhSDQviDQv9C+0LvRjNC30L7QstCw0YLQtdC70LUg0LjQtyDQutGN0YjQsCIKICAgICAgICAgICAgcHJvZmlydV9zeXN0ZW0udXNlcl9zZXJ2aWNlIC0+IHByb2ZpcnVfc3lzdGVtLnVzZXJfZGF0YWJhc2UgItCf0L7Qu9GD0YfQtdC90LjQtSDQtNCw0L3QvdGL0YUg0L4g0L/QvtC70YzQt9C+0LLQsNGC0LXQu9C1INC40Lcg0JHQlCIKICAgICAgICB9CgogICAgICAgIGR5bmFtaWMgcHJvZmlydV9zeXN0ZW0gIlVDMDMiICLQn9C+0LjRgdC6INC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRjyDQv9C+INC80LDRgdC60LUg0LjQvNC10L3QuCDQuCDRhNCw0LzQuNC70LjQuCIgewogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgICAgIHVzZXIgLT4gcHJvZmlydV9zeXN0ZW0udXNlcl9zZXJ2aWNlICLQn9C+0LjRgdC6INC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRjyIKICAgICAgICAgICAgcHJvZmlydV9zeXN0ZW0udXNlcl9zZXJ2aWNlIC0+IHByb2ZpcnVfc3lzdGVtLnVzZXJfZGF0YWJhc2UgItCf0L7Qu9GD0YfQtdC90LjQtSDQtNCw0L3QvdGL0YUg0L4g0L/QvtC70YzQt9C+0LLQsNGC0LXQu9GP0YUsINGB0L7QvtGC0LLQtdGC0YHRgtCy0YPRjtGJ0LjRhSDQvNCw0YHQutC1IgogICAgICAgIH0KCiAgICAgICAgZHluYW1pYyBwcm9maXJ1X3N5c3RlbSAiVUMwNCIgItCh0L7Qt9C00LDQvdC40LUg0YPRgdC70YPQs9C4IiB7CiAgICAgICAgICAgIGF1dG9MYXlvdXQKICAgICAgICAgICAgdXNlciAtPiBwcm9maXJ1X3N5c3RlbS50YXNrX3NlcnZpY2UgItCh0L7Qt9C00LDQvdC40LUg0L3QvtCy0L7QuSDRg9GB0LvRg9Cz0LggKFBPU1QgL3Rhc2spIgogICAgICAgICAgICBwcm9maXJ1X3N5c3RlbS50YXNrX3NlcnZpY2UgLT4gcHJvZmlydV9zeXN0ZW0udGFza19kYXRhYmFzZSAi0KHQvtGF0YDQsNC90LXQvdC40LUg0LTQsNC90L3Ri9GFINC+0LEg0YPRgdC70YPQs9C1IgogICAgICAgIH0KCiAgICAgICAgZHluYW1pYyBwcm9maXJ1X3N5c3RlbSAiVUMwNSIgItCf0L7Qu9GD0YfQtdC90LjQtSDRgdC/0LjRgdC60LAg0YPRgdC70YPQsyIgewogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgICAgIHVzZXIgLT4gcHJvZmlydV9zeXN0ZW0udGFza19zZXJ2aWNlICLQn9C+0LvRg9GH0LXQvdC40LUg0YHQv9C40YHQutCwINCy0YHQtdGFINGD0YHQu9C70YPQsyAoR0VUIC90YXNrKSIKICAgICAgICAgICAgcHJvZmlydV9zeXN0ZW0udGFza19zZXJ2aWNlIC0+IHByb2ZpcnVfc3lzdGVtLnRhc2tfZGF0YWJhc2UgItCf0L7Qu9GD0YfQtdC90LjQtSDQstGB0LXRhSDRg9GB0LvRg9CzINC40Lcg0JHQlCIKICAgICAgICB9CgogICAgICAgIGR5bmFtaWMgcHJvZmlydV9zeXN0ZW0gIlVDMDYiICLQlNC+0LHQsNCy0LvQtdC90LjQtSDRg9GB0LvRg9CzINCyINC30LDQutCw0LciIHsKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgICAgICB1c2VyIC0+IHByb2ZpcnVfc3lzdGVtLnVzZXJfc2VydmljZSAi0KHQvtC30LTQsNC90LjQtSDQt9Cw0LrQsNC30LAgKFBPU1QgL29yZGVyKSIKICAgICAgICAgICAgcHJvZmlydV9zeXN0ZW0udXNlcl9zZXJ2aWNlIC0+IHByb2ZpcnVfc3lzdGVtLm9yZGVyX3NlcnZpY2UgItCU0L7QsdCw0LLQu9C10L3QuNC1INC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRjyDQsiDQt9Cw0LrQsNC3IgoJCQlwcm9maXJ1X3N5c3RlbS5vcmRlcl9zZXJ2aWNlIC0+IHByb2ZpcnVfc3lzdGVtLnRhc2tfc2VydmljZSAi0JTQvtCx0LDQstC70LXQvdC40LUg0YPRgdC70YPQs9C4INCyINC30LDQutCw0LciCgkJCXByb2ZpcnVfc3lzdGVtLm9yZGVyX3NlcnZpY2UgLT4gcHJvZmlydV9zeXN0ZW0udGFza19kYXRhYmFzZSAi0J7QsdC90L7QstC70LXQvdC40LUg0LjQvdGE0L7RgNC80LDRhtC40Lgg0L4g0LfQsNC60LDQt9C1INCyINCR0JQiCiAgICAgICAgfQogICAgICAgIAogICAgICAgIGR5bmFtaWMgcHJvZmlydV9zeXN0ZW0gIlVDMDciICLQn9C+0LvRg9GH0LXQvdC40LUg0LfQsNC60LDQt9CwINC00LvRjyDQv9C+0LvRjNC30L7QstCw0YLQtdC70Y8iIHsKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgICAgICB1c2VyIC0+IHByb2ZpcnVfc3lzdGVtLnVzZXJfc2VydmljZSAi0J/QvtC70YPRh9C10L3QuNC1INC40L3RhNC+0YDQvNCw0YbQuNC4INC+INC30LDQutCw0LfQtSAoR0VUIC9vcmRlcikiCiAgICAgICAgICAgIHByb2ZpcnVfc3lzdGVtLnVzZXJfc2VydmljZSAtPiBwcm9maXJ1X3N5c3RlbS5vcmRlcl9zZXJ2aWNlICLQn9C+0LvRg9GH0LXQvdC40LUg0LjQvdGE0L7RgNC80LDRhtC40Lgg0L4g0LfQsNC60LDQt9C1INC00LvRjyDQv9C+0LvRjNC30L7QstCw0YLQtdC70Y8gKEdFVCAvb3JkZXIpIgoJCQlwcm9maXJ1X3N5c3RlbS5vcmRlcl9zZXJ2aWNlIC0+IHByb2ZpcnVfc3lzdGVtLnRhc2tfZGF0YWJhc2UgItCf0L7Qu9GD0YfQtdC90LjQtSDQuNC90YTQvtGA0LzQsNGG0LjQuCDQviDQt9Cw0LrQsNC30LUg0LjQtyDQkdCUIgogICAgICAgIH0KCiAgICAgICAgc3R5bGVzIHsKICAgICAgICAgICAgZWxlbWVudCAiZGF0YWJhc2UiIHsKICAgICAgICAgICAgICAgIHNoYXBlIGN5bGluZGVyCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9Cn0K"
+    },
+    "views" : {
+      "configuration" : {
+        "branding" : { },
+        "lastSavedView" : "UC02",
+        "metadataSymbols" : "SquareBrackets",
+        "properties" : {
+          "structurizr.tooltips" : "true"
+        },
+        "styles" : {
+          "elements" : [ {
+            "shape" : "Cylinder",
+            "tag" : "database"
+          } ]
+        },
+        "terminology" : { },
+        "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ]
+      },
+      "containerViews" : [ {
+        "automaticLayout" : {
+          "applied" : true,
+          "edgeSeparation" : 0,
+          "implementation" : "Graphviz",
+          "nodeSeparation" : 300,
+          "rankDirection" : "TopBottom",
+          "rankSeparation" : 300,
+          "vertices" : false
+        },
+        "dimensions" : {
+          "height" : 3265,
+          "width" : 2460
+        },
+        "elements" : [ {
+          "id" : "1",
+          "x" : 1597,
+          "y" : 199
+        }, {
+          "id" : "3",
+          "x" : 993,
+          "y" : 799
+        }, {
+          "id" : "4",
+          "x" : 1789,
+          "y" : 1999
+        }, {
+          "id" : "5",
+          "x" : 1260,
+          "y" : 1399
+        }, {
+          "id" : "6",
+          "x" : 239,
+          "y" : 2599
+        }, {
+          "id" : "7",
+          "x" : 989,
+          "y" : 2599
+        }, {
+          "id" : "8",
+          "x" : 1739,
+          "y" : 2599
+        } ],
+        "externalSoftwareSystemBoundariesVisible" : false,
+        "generatedKey" : true,
+        "key" : "Container-001",
+        "order" : 2,
+        "relationships" : [ {
+          "id" : "11"
+        }, {
+          "id" : "12",
+          "vertices" : [ {
+            "x" : 1110,
+            "y" : 1399
+          }, {
+            "x" : 1110,
+            "y" : 1699
+          } ]
+        }, {
+          "id" : "13"
+        }, {
+          "id" : "14"
+        }, {
+          "id" : "15"
+        }, {
+          "id" : "16",
+          "vertices" : [ {
+            "x" : 1639,
+            "y" : 2299
+          } ]
+        }, {
+          "id" : "17"
+        }, {
+          "id" : "9"
+        } ],
+        "softwareSystemId" : "2"
+      } ],
+      "dynamicViews" : [ {
+        "automaticLayout" : {
+          "applied" : true,
+          "edgeSeparation" : 0,
+          "implementation" : "Graphviz",
+          "nodeSeparation" : 300,
+          "rankDirection" : "TopBottom",
+          "rankSeparation" : 300,
+          "vertices" : false
+        },
+        "description" : "Создание нового пользователя",
+        "dimensions" : {
+          "height" : 2065,
+          "width" : 1680
+        },
+        "elementId" : "2",
+        "elements" : [ {
+          "id" : "1",
+          "x" : 615,
+          "y" : 199
+        }, {
+          "id" : "3",
+          "x" : 615,
+          "y" : 799
+        }, {
+          "id" : "6",
+          "x" : 990,
+          "y" : 1399
+        }, {
+          "id" : "7",
+          "x" : 240,
+          "y" : 1399
+        } ],
+        "externalBoundariesVisible" : false,
+        "key" : "UC01",
+        "order" : 3,
+        "relationships" : [ {
+          "description" : "Создание пользователя (POST /user)",
+          "id" : "9",
+          "order" : "1",
+          "response" : false
+        }, {
+          "description" : "Сохранение данных о пользователе",
+          "id" : "13",
+          "order" : "2",
+          "response" : false
+        }, {
+          "description" : "Кэширование данных о пользователе",
+          "id" : "12",
+          "order" : "3",
+          "response" : false
+        } ]
+      }, {
+        "automaticLayout" : {
+          "applied" : true,
+          "edgeSeparation" : 0,
+          "implementation" : "Graphviz",
+          "nodeSeparation" : 300,
+          "rankDirection" : "TopBottom",
+          "rankSeparation" : 300,
+          "vertices" : false
+        },
+        "description" : "Поиск пользователя по логину",
+        "dimensions" : {
+          "height" : 2065,
+          "width" : 1680
+        },
+        "elementId" : "2",
+        "elements" : [ {
+          "id" : "1",
+          "x" : 614,
+          "y" : 200
+        }, {
+          "id" : "3",
+          "x" : 614,
+          "y" : 800
+        }, {
+          "id" : "6",
+          "x" : 989,
+          "y" : 1400
+        }, {
+          "id" : "7",
+          "x" : 239,
+          "y" : 1400
+        } ],
+        "externalBoundariesVisible" : false,
+        "key" : "UC02",
+        "order" : 4,
+        "relationships" : [ {
+          "description" : "Поиск пользователя (GET /user)",
+          "id" : "9",
+          "order" : "1",
+          "response" : false
+        }, {
+          "description" : "Получение данных о пользователе из кэша",
+          "id" : "12",
+          "order" : "2",
+          "response" : false
+        }, {
+          "description" : "Получение данных о пользователе из БД",
+          "id" : "13",
+          "order" : "3",
+          "response" : false
+        } ]
+      }, {
+        "automaticLayout" : {
+          "applied" : true,
+          "edgeSeparation" : 0,
+          "implementation" : "Graphviz",
+          "nodeSeparation" : 300,
+          "rankDirection" : "TopBottom",
+          "rankSeparation" : 300,
+          "vertices" : false
+        },
+        "description" : "Поиск пользователя по маске имени и фамилии",
+        "dimensions" : {
+          "height" : 2065,
+          "width" : 930
+        },
+        "elementId" : "2",
+        "elements" : [ {
+          "id" : "1",
+          "x" : 239,
+          "y" : 200
+        }, {
+          "id" : "3",
+          "x" : 239,
+          "y" : 800
+        }, {
+          "id" : "6",
+          "x" : 239,
+          "y" : 1400
+        } ],
+        "externalBoundariesVisible" : false,
+        "key" : "UC03",
+        "order" : 5,
+        "relationships" : [ {
+          "description" : "Поиск пользователя",
+          "id" : "9",
+          "order" : "1",
+          "response" : false
+        }, {
+          "description" : "Получение данных о пользователях, соответствующих маске",
+          "id" : "13",
+          "order" : "2",
+          "response" : false
+        } ]
+      }, {
+        "automaticLayout" : {
+          "applied" : true,
+          "edgeSeparation" : 0,
+          "implementation" : "Graphviz",
+          "nodeSeparation" : 300,
+          "rankDirection" : "TopBottom",
+          "rankSeparation" : 300,
+          "vertices" : false
+        },
+        "description" : "Создание услуги",
+        "dimensions" : {
+          "height" : 2065,
+          "width" : 930
+        },
+        "elementId" : "2",
+        "elements" : [ {
+          "id" : "1",
+          "x" : 239,
+          "y" : 200
+        }, {
+          "id" : "4",
+          "x" : 239,
+          "y" : 800
+        }, {
+          "id" : "8",
+          "x" : 239,
+          "y" : 1400
+        } ],
+        "externalBoundariesVisible" : false,
+        "key" : "UC04",
+        "order" : 6,
+        "relationships" : [ {
+          "description" : "Создание новой услуги (POST /task)",
+          "id" : "11",
+          "order" : "1",
+          "response" : false
+        }, {
+          "description" : "Сохранение данных об услуге",
+          "id" : "15",
+          "order" : "2",
+          "response" : false
+        } ]
+      }, {
+        "automaticLayout" : {
+          "applied" : true,
+          "edgeSeparation" : 0,
+          "implementation" : "Graphviz",
+          "nodeSeparation" : 300,
+          "rankDirection" : "TopBottom",
+          "rankSeparation" : 300,
+          "vertices" : false
+        },
+        "description" : "Получение списка услуг",
+        "dimensions" : {
+          "height" : 2065,
+          "width" : 930
+        },
+        "elementId" : "2",
+        "elements" : [ {
+          "id" : "1",
+          "x" : 239,
+          "y" : 200
+        }, {
+          "id" : "4",
+          "x" : 239,
+          "y" : 800
+        }, {
+          "id" : "8",
+          "x" : 239,
+          "y" : 1400
+        } ],
+        "externalBoundariesVisible" : false,
+        "key" : "UC05",
+        "order" : 7,
+        "relationships" : [ {
+          "description" : "Получение списка всех усллуг (GET /task)",
+          "id" : "11",
+          "order" : "1",
+          "response" : false
+        }, {
+          "description" : "Получение всех услуг из БД",
+          "id" : "15",
+          "order" : "2",
+          "response" : false
+        } ]
+      }, {
+        "automaticLayout" : {
+          "applied" : true,
+          "edgeSeparation" : 0,
+          "implementation" : "Graphviz",
+          "nodeSeparation" : 300,
+          "rankDirection" : "TopBottom",
+          "rankSeparation" : 300,
+          "vertices" : false
+        },
+        "description" : "Добавление услуг в заказ",
+        "dimensions" : {
+          "height" : 2665,
+          "width" : 1660
+        },
+        "elementId" : "2",
+        "elements" : [ {
+          "id" : "1",
+          "x" : 614,
+          "y" : 200
+        }, {
+          "id" : "3",
+          "x" : 614,
+          "y" : 800
+        }, {
+          "id" : "4",
+          "x" : 989,
+          "y" : 2000
+        }, {
+          "id" : "5",
+          "x" : 614,
+          "y" : 1400
+        }, {
+          "id" : "8",
+          "x" : 239,
+          "y" : 2000
+        } ],
+        "externalBoundariesVisible" : false,
+        "key" : "UC06",
+        "order" : 8,
+        "relationships" : [ {
+          "description" : "Создание заказа (POST /order)",
+          "id" : "9",
+          "order" : "1",
+          "response" : false
+        }, {
+          "description" : "Добавление пользователя в заказ",
+          "id" : "14",
+          "order" : "2",
+          "response" : false
+        }, {
+          "description" : "Добавление услуги в заказ",
+          "id" : "17",
+          "order" : "3",
+          "response" : false
+        }, {
+          "description" : "Обновление информации о заказе в БД",
+          "id" : "16",
+          "order" : "4",
+          "response" : false
+        } ]
+      }, {
+        "automaticLayout" : {
+          "applied" : true,
+          "edgeSeparation" : 0,
+          "implementation" : "Graphviz",
+          "nodeSeparation" : 300,
+          "rankDirection" : "TopBottom",
+          "rankSeparation" : 300,
+          "vertices" : false
+        },
+        "description" : "Получение заказа для пользователя",
+        "dimensions" : {
+          "height" : 2665,
+          "width" : 930
+        },
+        "elementId" : "2",
+        "elements" : [ {
+          "id" : "1",
+          "x" : 239,
+          "y" : 200
+        }, {
+          "id" : "3",
+          "x" : 239,
+          "y" : 800
+        }, {
+          "id" : "5",
+          "x" : 239,
+          "y" : 1400
+        }, {
+          "id" : "8",
+          "x" : 239,
+          "y" : 2000
+        } ],
+        "externalBoundariesVisible" : false,
+        "key" : "UC07",
+        "order" : 9,
+        "relationships" : [ {
+          "description" : "Получение информации о заказе (GET /order)",
+          "id" : "9",
+          "order" : "1",
+          "response" : false
+        }, {
+          "description" : "Получение информации о заказе для пользователя (GET /order)",
+          "id" : "14",
+          "order" : "2",
+          "response" : false
+        }, {
+          "description" : "Получение информации о заказе из БД",
+          "id" : "16",
+          "order" : "3",
+          "response" : false
+        } ]
+      } ],
+      "systemContextViews" : [ {
+        "automaticLayout" : {
+          "applied" : true,
+          "edgeSeparation" : 0,
+          "implementation" : "Graphviz",
+          "nodeSeparation" : 300,
+          "rankDirection" : "TopBottom",
+          "rankSeparation" : 300,
+          "vertices" : false
+        },
+        "dimensions" : {
+          "height" : 1300,
+          "width" : 864
+        },
+        "elements" : [ {
+          "id" : "1",
+          "x" : 214,
+          "y" : 199
+        }, {
+          "id" : "2",
+          "x" : 214,
+          "y" : 799
+        } ],
+        "enterpriseBoundaryVisible" : true,
+        "generatedKey" : true,
+        "key" : "SystemContext-001",
+        "order" : 1,
+        "relationships" : [ {
+          "id" : "10",
+          "vertices" : [ {
+            "x" : 276,
+            "y" : 680
+          } ]
+        }, {
+          "id" : "18",
+          "vertices" : [ {
+            "x" : 576,
+            "y" : 667
+          } ]
+        } ],
+        "softwareSystemId" : "2"
+      } ]
+    }
+  }
