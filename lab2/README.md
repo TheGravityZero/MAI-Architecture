@@ -26,3 +26,20 @@
 * Создайте Dockerfile для вашего сервиса
 * Протестируйте его работу в Docker
 * Опубликуйте на github проект
+
+## Запуск:
+```
+docker compose up
+
+# пересобрать
+docker compose up --build
+```
+```
+# API Swagger
+localhost:8080/docs
+```
+## Зайти в базу:
+```
+docker exec -it postgres /bin/bash
+psql -U admin -d postgres
+```
