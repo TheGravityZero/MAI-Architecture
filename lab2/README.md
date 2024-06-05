@@ -41,5 +41,5 @@ localhost:8080/docs
 ## Зайти в базу:
 ```
 docker exec -it postgres /bin/bash
-psql -U admin -d postgres
+psql -U root -d postgres
 ```

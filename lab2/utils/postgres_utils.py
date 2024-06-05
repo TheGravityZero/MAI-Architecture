@@ -7,8 +7,8 @@ load_dotenv()
 class PostgresDB:
     def __init__(self, db_name = 'postgres') -> None:
         self.db_name = db_name
-        self.user = os.environ.get("POSTGRES_USER_NAME", "postgres")
-        self.password = os.environ.get("POSTGRES_USER_PASSWORD", "postgres")
+        self.user = os.environ.get("POSTGRES_USER_NAME", "root")
+        self.password = os.environ.get("POSTGRES_USER_PASSWORD", "root")
         self.host = os.environ.get("POSTGRES_HOST", "postgres")
         self.port = os.environ.get("POSTGRES_PORT", "5432")
         self.conn = psycopg2.connect(
