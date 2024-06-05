@@ -1,15 +1,16 @@
 import os
 import psycopg2
-import time
 
+from dotenv import load_dotenv
+load_dotenv()
 
 class PostgresDB:
     def __init__(self, db_name = 'postgres') -> None:
         self.db_name = db_name
-        self.user = 'admin'
-        self.password = 'admin'
-        self.host = 'postgres'
-        self.port = '5432'
+        self.user = os.environ.get("POSTGRES_USER_NAME", "postgres")
+        self.password = os.environ.get("POSTGRES_USER_PASSWORD", "postgres")
+        self.host = os.environ.get("POSTGRES_HOST", "postgres")
+        self.port = os.environ.get("POSTGRES_PORT", "5432")
         self.conn = psycopg2.connect(
             dbname=self.db_name,
             user=self.user,
