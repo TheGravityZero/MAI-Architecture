@@ -1,5 +1,7 @@
 # Test comprasion
-## wrk -t4 -c100 -d30s 'http://localhost:8080/get_recipient_details?recipient_id=1'
+```
+wrk -t4 -c100 -d30s 'http://localhost:8080/get_recipient_details?recipient_id=1'
+```
 | Metric          | Without Redis            | With Redis                |
 |-----------------|--------------------------|---------------------------|
 | Duration        | 30s                      | 30s                       |
