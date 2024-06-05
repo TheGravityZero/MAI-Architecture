@@ -1,0 +1,157 @@
+openapi: "3.1.0"
+info:
+  title: "FastAPI"
+  version: "0.1.0"
+paths:
+  /get_all:
+    get:
+      summary: "Get All Packages"
+      operationId: "get_all_packages_get_all_get"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+  /get_info_by_id:
+    get:
+      summary: "Get All Packages"
+      operationId: "get_all_packages_get_info_by_id_get"
+      parameters:
+        - name: package_id
+          in: query
+          required: true
+          schema:
+            type: string
+            title: "Package Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+  /create_package:
+    post:
+      summary: "Create Package"
+      operationId: "create_package_create_package_post"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PackageModel"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+  /update_package:
+    put:
+      summary: "Update Package"
+      operationId: "update_package_update_package_put"
+      parameters:
+        - name: package_id
+          in: query
+          required: true
+          schema:
+            type: string
+            title: "Package Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PackageModel"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+  /delete_package:
+    delete:
+      summary: "Delete Package"
+      operationId: "delete_package_delete_package_delete"
+      parameters:
+        - name: package_id
+          in: query
+          required: true
+          schema:
+            type: string
+            title: "Package Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: "#/components/schemas/ValidationError"
+          type: array
+          title: "Detail"
+      type: object
+      title: "HTTPValidationError"
+    PackageModel:
+      properties:
+        weight:
+          type: number
+          title: "Weight"
+        price:
+          type: number
+          title: "Price"
+      type: object
+      required:
+        - weight
+        - price
+      title: "PackageModel"
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: "Location"
+        msg:
+          type: string
+          title: "Message"
+        type:
+          type: string
+          title: "Error Type"
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: "ValidationError"

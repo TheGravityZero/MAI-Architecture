@@ -1,0 +1,120 @@
+version: '3.7'
+services:
+
+  init:
+     container_name: init
+     build:
+       context: ./app/init_data
+       dockerfile: Dockerfile
+     networks:
+       - arch-network
+     depends_on:
+       postgres:
+         condition: service_healthy
+       mongo:
+         condition: service_healthy
+
+  gateway:
+    container_name: gateway
+    build:
+      context: ./app/gateway
+      dockerfile: Dockerfile
+    ports:
+      - 8083:8080
+    networks:
+      - arch-network
+    depends_on:
+      postgres:
+        condition: service_started
+
+  recipients:
+    container_name: recipients
+    build:
+      context: ./app/recipients
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - arch-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  deliveries:
+    container_name: deliveries
+    build:
+      context: ./app/deliveries
+      dockerfile: Dockerfile
+    ports:
+      - 8081:8080
+    networks:
+      - arch-network
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  packages:
+    container_name: packages
+    build:
+      context: ./app/packages
+      dockerfile: Dockerfile
+    ports:
+      - 8082:8080
+    networks:
+      - arch-network
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - 27017:27017
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 5s
+      timeout: 5s
+      retries: 3
+    networks:
+      - arch-network
+
+  postgres:
+    container_name: postgres
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - PGDATA=/data/postgres
+      - POSTGRES_DB=arch_db
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d postgres" ]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    networks:
+      - arch-network
+
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - 6379:6379
+    networks:
+      - arch-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+networks:
+  arch-network:
+    driver: "bridge"
+    external: false
+
