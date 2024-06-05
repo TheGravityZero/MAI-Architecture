@@ -1,0 +1,173 @@
+openapi: "3.1.0"
+info:
+  title: "FastAPI"
+  version: "0.1.0"
+paths:
+  /get_all:
+    get:
+      summary: "Get All Deliveries"
+      operationId: "get_all_deliveries_get_all_get"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+  /get_info_by_id:
+    get:
+      summary: "Get All Deliveries"
+      operationId: "get_all_deliveries_get_info_by_id_get"
+      parameters:
+        - name: delivery_id
+          in: query
+          required: true
+          schema:
+            type: string
+            title: "Delivery Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+  /create_delivery:
+    post:
+      summary: "Create Delivery"
+      operationId: "create_delivery_create_delivery_post"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeliveryModel"
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+  /update_delivery:
+    put:
+      summary: "Update Delivery"
+      operationId: "update_delivery_update_delivery_put"
+      parameters:
+        - name: delivery_id
+          in: query
+          required: true
+          schema:
+            type: string
+            title: "Delivery Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeliveryModel"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+  /delete_delivery:
+    delete:
+      summary: "Delete Delivery"
+      operationId: "delete_delivery_delete_delivery_delete"
+      parameters:
+        - name: delivery_id
+          in: query
+          required: true
+          schema:
+            type: string
+            title: "Delivery Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+components:
+  schemas:
+    DeliveryModel:
+      properties:
+        from_address:
+          type: string
+          title: "From Address"
+        to_address:
+          type: string
+          title: "To Address"
+        sender:
+          type: integer
+          title: "Sender"
+        recipient:
+          type: integer
+          title: "Recipient"
+        state:
+          type: string
+          title: "State"
+        package_id:
+          type: string
+          title: "Package Id"
+      type: object
+      required:
+        - from_address
+        - to_address
+        - sender
+        - recipient
+        - state
+        - package_id
+      title: "DeliveryModel"
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: "#/components/schemas/ValidationError"
+          type: array
+          title: "Detail"
+      type: object
+      title: "HTTPValidationError"
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: "Location"
+        msg:
+          type: string
+          title: "Message"
+        type:
+          type: string
+          title: "Error Type"
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: "ValidationError"

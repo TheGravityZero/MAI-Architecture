@@ -1,0 +1,208 @@
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+paths:
+  /create_recipient/:
+    post:
+      summary: Create Recipient
+      operationId: create_recipient_create_recipient__post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipientCreate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  '/update_recipient/{recipient_id}':
+    put:
+      summary: Update Recipient
+      operationId: update_recipient_update_recipient__recipient_id__put
+      parameters:
+        - name: recipient_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            title: Recipient Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipientUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  '/get_recipient_details/{recipient_id}':
+    get:
+      summary: Get Recipient Details
+      operationId: get_recipient_details_get_recipient_details__recipient_id__get
+      parameters:
+        - name: recipient_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            title: Recipient Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /search_by_name/:
+    get:
+      summary: Search By Name
+      operationId: search_by_name_search_by_name__get
+      parameters:
+        - name: first_name
+          in: query
+          required: false
+          schema:
+            type: string
+            minLength: 1
+            title: First Name
+        - name: second_name
+          in: query
+          required: false
+          schema:
+            type: string
+            minLength: 1
+            title: Second Name
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /search_by_recipient_login/:
+    get:
+      summary: Search By Username
+      operationId: search_by_username_search_by_recipient_login__get
+      parameters:
+        - name: recipient_login
+          in: query
+          required: false
+          schema:
+            type: string
+            minLength: 1
+            title: Recipient Login
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    RecipientCreate:
+      properties:
+        recipient_login:
+          type: string
+          title: Recipient Login
+        first_name:
+          type: string
+          title: First Name
+        second_name:
+          type: string
+          title: Second Name
+        address:
+          type: string
+          title: Address
+        password:
+          type: string
+          title: Password
+      required:
+        - recipient_login
+        - first_name
+        - password
+      title: RecipientCreate
+      type: object
+    RecipientUpdate:
+      properties:
+        recipient_login:
+          type: string
+          title: Recipient Login
+        first_name:
+          type: string
+          title: First Name
+        second_name:
+          type: string
+          title: Second Name
+        address:
+          type: string
+          title: Address
+        password:
+          type: string
+          title: Password
+      title: RecipientUpdate
+      type: object
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+      type: object
