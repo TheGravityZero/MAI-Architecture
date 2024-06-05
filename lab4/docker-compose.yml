@@ -1,0 +1,50 @@
+version: '3.7'
+services:
+
+  init:
+    container_name: init
+    build:
+      context: ./init_data
+      dockerfile: Dockerfile
+    networks:
+      - arch-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  recipients:
+    container_name: recipients
+    build:
+      context: ./recipients
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - arch-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    container_name: postgres
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=EUGIVA
+      - POSTGRES_PASSWORD=EUGIVA
+      - PGDATA=/data/postgres
+      - POSTGRES_DB=arch_db
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d postgres" ]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    networks:
+      - arch-network
+
+networks:
+  arch-network:
+    driver: "bridge"
+    external: false
