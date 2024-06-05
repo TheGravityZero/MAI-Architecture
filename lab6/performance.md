@@ -1,5 +1,7 @@
 # Test comprasion
+```
 ## wrk -t4 -c100 -d30s 'http://localhost:8080/get_recipient_details?recipient_id=1'
+```
 | Metric          | Without Redis            | With Redis                |
 |-----------------|--------------------------|---------------------------|
 | Duration        | 30s                      | 30s                       |
@@ -17,3 +19,15 @@
 | Total Data Read | 7.58MB                   | 30.56MB                   |
 | Requests/sec    | 1148.29                  | 4015.34                   |
 | Transfer/sec    | 264.56KB                 | 1.04MB                    |
+
+# Latency Distribution with Redis
+     50%   36.35ms
+     75%   42.31ms
+     90%   54.30ms
+     99%   91.19ms
+
+# Latency Distribution without Redis
+    50%    72.19ms
+    75%    128.37ms
+    90%    224.56ms
+    99%    578.92ms
